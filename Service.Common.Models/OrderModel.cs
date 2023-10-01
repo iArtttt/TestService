@@ -29,6 +29,8 @@ namespace Service.Common.Models
 
         public List<OrderLogItem> Changes { get; set; } = new List<OrderLogItem>();
 
+        public DeliveryInfoModel Delivery { get; set; } = new DeliveryInfoModel();
+
         public OrderModel()
         {
             AddOrredLog(OrderChangeStatusType.Created, Status);

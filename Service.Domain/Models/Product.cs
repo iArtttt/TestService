@@ -15,5 +15,11 @@ namespace Service.Domain.Models
         public decimal Price { get; set; }
 
         public int Count { get; set; }
+
+        public DateTime Created { get; set; }
+
+        public int CreatedById { get; set; }
+
+        public User CreatedBy { get; set; } = null!;
     }
 }

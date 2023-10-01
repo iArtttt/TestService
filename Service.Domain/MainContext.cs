@@ -21,6 +21,7 @@ namespace Service.Domain
         public DbSet<OrderedProduct> OrderedProducts { get; set; }
         
         public DbSet<OrderChangeStatusLog> OrderChangeStatusLogs { get; set; }
+        public DbSet<DeliveryService> DeliveryServices { get; set; }
 
 
         public MainContext(DbContextOptions dbContextOptions)
@@ -62,7 +63,6 @@ namespace Service.Domain
             modelBuilder.Entity<Customer>()
                 .Property(s => s.Address).HasMaxLength(128).IsRequired();
 
-
             modelBuilder.Entity<Product>()
                 .Property(s => s.Name).HasMaxLength(128).IsRequired();
             modelBuilder.Entity<Product>()
@@ -85,6 +85,8 @@ namespace Service.Domain
                 .Property(s => s.Status).HasDefaultValue(OrderStatus.Created).IsRequired();
             modelBuilder.Entity<Order>()
                 .Property(s => s.TotalPrice).HasDefaultValue(0m).IsRequired();
+            modelBuilder.Entity<Order>().OwnsOne(o => o.Delivery)
+                .Property(d => d.Address).IsRequired().HasMaxLength(150);
 
 
             modelBuilder.Entity<OrderedProduct>()
@@ -104,6 +106,7 @@ namespace Service.Domain
             modelBuilder.Entity<OrderChangeStatusLog>()
                 .HasIndex(i => i.OrderId);
 
+            modelBuilder.Entity<DeliveryService>().Property(d => d.DeliveryName).IsRequired().HasMaxLength(100);
 
 
             using HMACSHA512 hmac = new HMACSHA512();
@@ -120,6 +123,14 @@ namespace Service.Domain
                     Email = "admin@gmail.com", 
                     Role = RoleType.Admin 
                 });
+
+            modelBuilder.Entity<DeliveryService>()
+                .HasData(
+                new DeliveryService { Id = 1, DeliveryName = "Nova Poshta" },
+                new DeliveryService { Id = 2, DeliveryName = "Ukr Poshta" },
+                new DeliveryService { Id = 3, DeliveryName = "Meest Express" },
+                new DeliveryService { Id = 4, DeliveryName = "Samoviviz" }
+                );
 
             modelBuilder.Entity<ProductCategory>()
                 .HasData(

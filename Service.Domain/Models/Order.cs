@@ -9,7 +9,7 @@ namespace Service.Domain.Models
         
         public OrderStatus Status { get; set; }
         
-        public List<OrderedProduct> OrderedProducts { get; set; } = null!;
+        public List<OrderedProduct> Products { get; set; } = null!;
         
         public int CustomerId { get; set; }
         
@@ -18,5 +18,6 @@ namespace Service.Domain.Models
         public DateTime CreationDate { get; set; }
         
         public List<OrderChangeStatusLog> Changes { get; set; } = null!;
+        public DeliveryInfo Delivery { get; set; } = null!;
     }
 }

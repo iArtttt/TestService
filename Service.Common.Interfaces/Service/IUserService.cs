@@ -5,7 +5,7 @@ namespace Service.Common.Interfaces.Service
     public interface IUserService
     {
         Task<List<AccountModel>?> GetAll(string? login, string? email);
-        Task<AccountModel> Get(int id);
+        Task<AccountModel?> Get(int id);
         Task Update(AccountModel model);
         Task<bool> Remove(int id);
     }
