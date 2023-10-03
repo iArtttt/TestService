@@ -5,7 +5,7 @@
     {
         None = 0,
         Admin = 1,
-        Costomer = 2,
+        Customer = 2,
         Director = 4,
 
     }
