@@ -6,7 +6,7 @@
         None = 0,
         Admin = 1,
         Customer = 2,
-        Director = 4,
+        Vendor = 4,
 
     }
 }
