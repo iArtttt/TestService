@@ -5,8 +5,8 @@
     {
         None = 0,
         Admin = 1,
-        Customer = 2,
-        Vendor = 4,
+        Vendor = 2,
+        Customer = 4,
 
     }
 }
