@@ -13,11 +13,11 @@ namespace Service.Common.Interfaces.Service
         Task<OrderModel?> GetByVendor(int id, int vendorId);
         Task<OrderModel?> GetByCustomer(int id, int customerId);
 
-        // To create
+        Task<OrderModel?> Create(int delivaryId, string? address, ICustomerModel customer);
+        Task<OrderModel?> Create(int delivaryId, string? address, int customerId);
 
-        //Task<OrderModel?> Create(int delivaryId, string? address, ICustomerModel customer);
-        //Task<OrderModel?> Create(int delivaryId, string? address, int customerId);
-
+        Task<OrderModel?> Update(int orderId, int deliveryId, string? address, int customerId);
+        
         List<(int id, string name)> GetStatuses();
 
         Task<(OrderModel? order, string? messege)> AddProduct(int orderId, int productId, int count, int? costumerId = null);
